@@ -1,8 +1,9 @@
 const SearchGet = require("../controllers/SearchGet")
+const Authmiddleware = require("../Middlewares/Authmiddleware")
 
 const router = require("express").Router()
 
-router.get("/", SearchGet)
+router.get("/", Authmiddleware,SearchGet)
 
 module.exports = {
     path:"/search",
