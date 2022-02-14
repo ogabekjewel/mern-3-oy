@@ -26,6 +26,10 @@ Glob("**/*Route.js", (err , files) => {
 app.set("view engine", "ejs")
 app.set("views", Path.join(__dirname, "views"))
 
+app.use(Express.json())
+app.use(Express.urlencoded({ extended: true }))
+
+// Logger
 app.use(Morgan("tiny"))
 // Helmet xavfsizlikni ta'minlash uchun
 app.use(Helmet())
