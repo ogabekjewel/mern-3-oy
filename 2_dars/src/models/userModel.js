@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    full_name: {
+    fullname: {
         type: String,
         min: 5,
         max: 50,
@@ -27,11 +27,14 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
+    },
+    password: {
+        type: String,
         required: true,
     },
 })
 
-const users = mongoose("users", userSchema)
+const users = mongoose.model("users", userSchema)
 
 module.exports = users
 
