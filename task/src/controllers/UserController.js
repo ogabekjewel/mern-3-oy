@@ -26,13 +26,15 @@ module.exports = class UserController {
             email,
             password: hash,
         })
-        console.log(user)
+
+        // console.log(user)
+        
         let token = generateToken({
-            ...user,
+            ...user._doc,
             password: undefined,
         })
 
-        res.cookie("token", token).redirect("/")
+        res.cookie("token", token).redirect(`/login`)
     }
     static async LoginPOST(req, res) {
         try {
@@ -53,11 +55,11 @@ module.exports = class UserController {
             }
 
             let token = generateToken({
-                ...user,
+                ...user._doc,
                 password: undefined,
             })
 
-            res.cookie("token", token).redirect("/")
+            res.cookie("token", token).redirect(`/${user.username}`)
         } catch(e) {
             console.log(e)
             res.render("login", {
