@@ -1,8 +1,9 @@
+const users = require("../models/UsersModel")
 const { v4 } = require("uuid")
 const { generateToken } = require("../modules/jwt")
-const users = require("../models/usersModel")
 const { generateHash, compareHash } = require("../modules/bcrypt")
 const { SignUpValidation, LoginValidation } = require("../modules/validations")
+
 
 module.exports = class UserController {
     static SignUpGET(req, res) {
