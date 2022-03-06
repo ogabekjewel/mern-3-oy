@@ -1,4 +1,5 @@
 const users = require("../Model/UserModel")
+const MenuController = require("./MenuController")
 const sms = require("./MessageSend")
 const { reqCity, reqPhone } = require("./Texts")
 
@@ -219,11 +220,14 @@ module.exports = async function (message, bot, user) {
                 }, {
                     step: 5,
                 })
-                await bot.sendMessage(userId, "Tabriklaymiz registratsiyadan muvaffaqqiyatli o'tdingiz")
+
+                await bot.sendMessage(userId, "Tabriklaymiz registratsiyadan   o'tdingiz")
+                await MenuController(bot, message, user)
             } else {
                 await bot.sendMessage(userId, "Kod xato")
             }
         }
+
 
     } catch(e) {
         console.log(e) 

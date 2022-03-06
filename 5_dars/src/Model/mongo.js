@@ -3,6 +3,7 @@ const { MONGO_URL } = require("../../config")
 
 // import model ...
 require("./UserModel")
+require("./CommentModel")
 
 module.exports = async function() {
     try {
