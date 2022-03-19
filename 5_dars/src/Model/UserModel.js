@@ -24,6 +24,12 @@ const UserSchema = new mongoose.Schema({
         required: true,
         default: 0,
     },
+    longitude: {
+        type: String,
+    }, 
+    latitude: {
+        type: String,
+    },
 })
 
 const users = mongoose.model("users", UserSchema)

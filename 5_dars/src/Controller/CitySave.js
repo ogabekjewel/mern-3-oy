@@ -1,26 +1,25 @@
 const users = require("../Model/UserModel")
 const MenuController = require("./MenuController")
-const { ChangeLang } = require("./Texts")
+const { CityText } = require("./Texts")
 
-module.exports = async function (bot, message, user) {
+module.exports = async function(bot, message, user) {
     try {
+        const data = message.data
         const userId = message.from.id
         const messageId = message.message.message_id
-        const data = message.data
 
         await users.findOneAndUpdate({
             user_id: userId,
         }, {
-            lang: data,
             step: 5,
+            city: data,
         })
-        user.lang = data
-        let msg = ChangeLang(data)
-        await bot.sendMessage(userId, msg)
-        await bot.deleteMessage(userId, messageId) 
+
+        let msg = CityText(user.lang)
+        await bot.sendMessage(userId, msg) 
+        await bot.deleteMessage(userId, messageId)
         await MenuController(bot, message, user)
-
-
+        
     } catch(e) {
         console.log(e)
     }
